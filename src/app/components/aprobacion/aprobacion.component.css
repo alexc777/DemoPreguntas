@@ -1,0 +1,30 @@
+.mb_btns {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.btn_dixt {
+  margin: 5px;
+}
+
+.margin_op {
+  margin: 2px 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .mb_btns {
+    justify-content: center;
+  }
+
+  .cont_options {
+    float: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .margin_op {
+    margin: 4px 0;
+  }
+}

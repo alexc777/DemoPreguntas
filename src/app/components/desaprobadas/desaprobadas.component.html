@@ -1,0 +1,28 @@
+<table class="table table-hover" *ngIf="_cs.desaprobadas.length >= 1">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th scope="col">Nombre y Apellido</th>
+      <th scope="col">Pregunta</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let pregunta of _cs.desaprobadas; let idx = index" class="animated fadeIn fast">
+      <ng-container *ngIf="pregunta.estado == 3">
+        <td> {{ idx + 1 }} </td>
+        <td> {{ pregunta.nombre }} {{ pregunta.apellido }} </td>
+        <td> {{ pregunta.pregunta }} </td>
+        <td>
+          <button type="button" class="btn btn-outline-danger" (click)="eliminar(pregunta.id)">Eliminar</button>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<div class="container_screen" *ngIf="_cs.desaprobadas.length == 0">
+  <div class="ico_sun"></div>
+  <h1>De momento no hay preguntas</h1>
+</div>

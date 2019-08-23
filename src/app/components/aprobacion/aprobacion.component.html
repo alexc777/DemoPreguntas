@@ -1,0 +1,41 @@
+
+<div class="col-sm-12 mb_btns">
+  <a class="btn btn-outline-dark btn_dixt" target="_blank" [routerLink]="['/listado']">Listado General</a>
+  <a class="btn btn-outline-primary btn_dixt" target="_blank" [routerLink]="['/completadas']">Completadas</a>
+  <a class="btn btn-outline-success btn_dixt" target="_blank" [routerLink]="['/preguntas']">Aprobadas</a>
+  <a class="btn btn btn-outline-danger btn_dixt" target="_blank" [routerLink]="'/desaprobadas'">Desaprobadas</a>
+</div>
+
+<table class="table table-hover" *ngIf="_cs.aprobacion.length >= 1">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Pregunta</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let pregunta of _cs.aprobacion; let idx = index" class="animated fadeIn fast">
+      <ng-container *ngIf="pregunta.estado == 1">
+        <td> {{ idx + 1 }} </td>
+        <td> {{ pregunta.nombre }} {{ pregunta.apellido }} </td>
+        <td> {{ pregunta.pregunta }} </td>
+        <td>
+          <div class="cont_options">
+            <button type="button" class="btn btn-outline-success margin_op" (click)="aprobarPregunta(pregunta,pregunta.id)">Aprobar</button>
+            <button type="button" class="btn btn btn-outline-danger" (click)="desaprobarPregunta(pregunta,pregunta.id)">
+              Desaprobar
+            </button>
+          </div>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<div class="container_screen" *ngIf="_cs.aprobacion.length == 0">
+  <div class="ico_sun"></div>
+  <h1>De momento no hay preguntas</h1>
+</div>
